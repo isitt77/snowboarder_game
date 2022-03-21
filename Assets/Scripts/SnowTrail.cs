@@ -13,9 +13,14 @@ public class SnowTrail : MonoBehaviour
             Debug.Log("Snow flying from your board.");
             trailEffect.Play();
         }
-        else
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
         {
-           
+            Debug.Log("You have left the ground.");
+            trailEffect.Stop();
         }
     }
 }
