@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     SurfaceEffector2D surfaceEffector2D;
 
     bool canMove = true;
+    bool hasCrashed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canMove)
+        if (canMove && !hasCrashed)
         {
             RotatePlayer();
             RespondToBoost();
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             DisableControls();
+            //DisableFX();
         }
     }
 
@@ -38,6 +40,13 @@ public class PlayerController : MonoBehaviour
     {
         canMove = false;
     }
+
+    //public void DisableFX()
+    //{
+    //    hasCrashed = true;
+    //    FindObjectOfType<CrashDetector>().
+    //}
+
 
     void RespondToBoost()
     {

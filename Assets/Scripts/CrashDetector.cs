@@ -14,12 +14,19 @@ public class CrashDetector : MonoBehaviour
         if(other.tag == "Ground")
         {
             Debug.Log("You crashed!");
-            crashEffect.Play();
+            CrashFX();
             FindObjectOfType<PlayerController>().DisableControls();
-            GetComponent<AudioSource>().PlayOneShot(crashSFX);
+            
             Invoke("ReloadScene", crashReloadDelay);
         }   
     }
+
+    public void CrashFX()
+    {
+        crashEffect.Play();
+        GetComponent<AudioSource>().PlayOneShot(crashSFX);
+    }
+
     void ReloadScene()
     {
         SceneManager.LoadScene(0);
